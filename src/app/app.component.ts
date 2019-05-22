@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,9 @@ export class AppComponent {
   msg:string = '';
 
   employees = [
-    {'codigo': 12, nombre: 'Portatil Hp Envy', valor:3500000},
-    {'codigo': 13, nombre: 'Portatil Asus x542ur', valor: 2800000},
-    {'codigo': 14, nombre: 'Portatil Thosiba x456', valor:1500000}
+    /*{codigo: 12, nombre: 'Portatil Hp Envy', valor:3500000},
+    {codigo: 13, nombre: 'Portatil Asus x542ur', valor: 2800000},
+    {codigo: 14, nombre: 'Portatil Thosiba x456', valor:1500000}*/
   ];
 
   model:any = {};
