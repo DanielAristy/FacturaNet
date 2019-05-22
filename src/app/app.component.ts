@@ -6,14 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title:string = 'Angular Crud';
+  /*title:string = 'Angular Crud';*/
   
   msg:string = '';
 
   employees = [
-    {'name': 'Fazt', position: 'manager', email:'email@email.com'},
-    {'name': 'Juan', position: 'Designer', email:'email@email.com'},
-    {'name': 'Pedro', position: 'Programmer', email:'email@email.com'}
+    {'codigo': 12, nombre: 'Portatil Hp Envy', valor:3500000},
+    {'codigo': 13, nombre: 'Portatil Asus x542ur', valor: 2800000},
+    {'codigo': 14, nombre: 'Portatil Thosiba x456', valor:1500000}
   ];
 
   model:any = {};
@@ -36,9 +36,9 @@ export class AppComponent {
   myValue;
   editEmployee(i):void {
     this.hideUpdate = false;
-    this.model2.name = this.employees[i].name;
-    this.model2.position = this.employees[i].position;
-    this.model2.email = this.employees[i].email;
+    this.model2.codigo = this.employees[i].codigo;
+    this.model2.nombre = this.employees[i].nombre;
+    this.model2.valor = this.employees[i].valor;
     this.myValue = i;
   }
 
