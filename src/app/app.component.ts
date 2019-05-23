@@ -10,6 +10,8 @@ export class AppComponent {
   /*title:string = 'Angular Crud';*/
   
   msg:string = '';
+  producto:boolean = false;
+  factura:boolean = false;
 
   employees = [
     /*{codigo: 12, nombre: 'Portatil Hp Envy', valor:3500000},
@@ -20,7 +22,14 @@ export class AppComponent {
   model:any = {};
   model2:any = {};
   hideUpdate:boolean = true;
-
+  /*Manejo de vistas */
+  vista(){
+    this.producto = !this.producto;
+  }
+  vista2(){
+    this.factura = !this.factura;
+  }
+  
   addEmployee():void{
     this.employees.push(this.model);
     this.msg = 'campo agregado';
