@@ -1,150 +1,97 @@
 <div class="container">
-      <div class="col-sm-4">
-        <img width="300" src="./assets/Logo.svg" />
+  <div class="col-sm-4">
+    <img width="300" src="./assets/Logo.svg" />
+  </div>
+
+  <div class="botones">
+      <button (click)="vista()" class="btn">Agregar Productos</button>
+      <button (click)="vista2()" class="btn">Nueva Factura</button>
+  </div>
+
+  <!--Mensajes-->
+  <div class="row"> 
+    <div class="col-sm-4">
+      <div class="alert alert-success alert-dismissable" *ngIf="msg">
+        <a href="#" class="close" (click)="closeAlert()">
+          &times;
+        </a>
+        {{msg}}
       </div>
-      <div class="botones">
-          <button (click)="vista()" class="btn">Agregar Productos</button>
-          <button (click)="vista2()" class="btn">Nueva Factura</button>
-      </div>
+    </div>
+  </div>
+  
+  <!--Vista de la Factura-->
+  <div *ngIf= "factura" class="app">
+    <div class="row">
 
-      <div *ngIf= "factura" class="app">
-
-          <div class="col-sm-8">
-              <h2>Leer Datos: </h2>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Codigo</th>
-                    <th>Nombre</th>
-                    <th>Valor</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let employee of employees; let i = index">
-                    <td>{{employee.codigo}}</td>
-                    <td>{{employee.nombre}}</td>
-                    <td>{{employee.valor}}</td>
-                    <td>
-                      <a (click)="editEmployee(i)" class="btn btn-success">
-                        Editar
-                      </a>
-                      <a (click)="deleteEmployee(i)" class="btn btn-danger">
-                        Borrar
-                      </a>
-                    </td>
-                  </tr>
-        
-                </tbody>
-              </table>
-            </div>
-
-            <!--Actualizar los Datos-->
-            <div class="col-sm-4" [hidden]="hideUpdate">
-                <h2>Actualizar Datos:</h2>
-                <form class="form-horizontal">
-
-                  <!--Entrada de texto Codigo-->
-                  <div class="form-group">
-                    <label for="codigo" class="control-label col-sm-2">
-                      Codigo
-                    </label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="codigo"
-                        name="codigo" [(ngModel)]="model2.codigo"
-                        placeholder="Ingrese un nuevo codigo"
-                      >
-                    </div>
-                  </div>
-
-                  <!--Entrada de texto Nombre-->
-                  <div class="form-group">
-                    <label for="nombre" class="control-label col-sm-2">
-                      Nombre
-                    </label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="codigo"
-                        name="nombre" [(ngModel)]="model2.nombre"
-                        placeholder="Ingrese un nuevo nombre"
-                      >
-                    </div>
-                  </div>
-
-                  <!--Entrada de texto Valor-->
-                  <div class="form-group">
-                    <label for="valor" class="control-label col-sm-2">
-                      Valor
-                    </label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" id="valor"
-                        name="valor" [(ngModel)]="model2.valor"
-                        placeholder="Ingrese un nuevo valor"
-                      >
-                    </div>
-                  </div>
-          
-                  <div class="form-group">
-                    <div class="col-sm-10 col-sm-offset-2">
-                      <button type="submit" class="btn btn-success" (click)="updateEmployee()">
-                        Guardar
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-          </div>
-
-      </div>
-
-      <!--Vista de productos-->
-      <div *ngIf= "producto" class="app">
-
-          <!--Mensajes-->
-          <div class="row"> 
-            <div class="col-sm-4">
-              <div class="alert alert-success alert-dismissable" *ngIf="msg">
-                <a href="#" class="close" (click)="closeAlert()">
-                  &times;
-                </a>
-                {{msg}}
-              </div>
-            </div>
-          </div>
+        <div class="col-sm-8 ">
+            <h2>Leer Datos: </h2>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Nombre</th>
+                  <th>Valor</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of employees; let i = index">
+                  <td>{{employee.codigo}}</td>
+                  <td>{{employee.nombre}}</td>
+                  <td>{{employee.valor}}</td>
+                  <td>
+                    <a (click)="editEmployee(i)" class="btn btn-success">
+                      Editar
+                    </a>
+                    <a (click)="deleteEmployee(i)" class="btn btn-danger">
+                      Borrar
+                    </a>
+                  </td>
+                </tr>
       
-          <div class="row">
-            <!--Crear los productos-->
-            <div class="col-sm-8">
-              <h2>Ingresar Productos:</h2>
+              </tbody>
+            </table>
+          </div>
+          <!--Actualizar los Datos-->
+          <div class="col-sm-4" [hidden]="hideUpdate">
+              <h2>Actualizar Datos:</h2>
               <form class="form-horizontal">
+  
+                <!--Entrada de texto Codigo-->
                 <div class="form-group">
                   <label for="codigo" class="control-label col-sm-2">
                     Codigo
                   </label>
                   <div class="col-sm-10">
                     <input type="number" class="form-control" id="codigo"
-                      name="codigo" [(ngModel)]="model.codigo"
+                      name="codigo" [(ngModel)]="model2.codigo"
                       placeholder="Ingrese un nuevo codigo"
                     >
                   </div>
                 </div>
+  
+                <!--Entrada de texto Nombre-->
                 <div class="form-group">
                   <label for="nombre" class="control-label col-sm-2">
                     Nombre
                   </label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="codigo"
-                      name="nombre" [(ngModel)]="model.nombre"
+                      name="nombre" [(ngModel)]="model2.nombre"
                       placeholder="Ingrese un nuevo nombre"
                     >
                   </div>
                 </div>
+  
+                <!--Entrada de texto Valor-->
                 <div class="form-group">
                   <label for="valor" class="control-label col-sm-2">
                     Valor
                   </label>
                   <div class="col-sm-10">
                     <input type="number" class="form-control" id="valor"
-                      name="valor" [(ngModel)]="model.valor"
+                      name="valor" [(ngModel)]="model2.valor"
                       placeholder="Ingrese un nuevo valor"
                     >
                   </div>
@@ -152,7 +99,7 @@
         
                 <div class="form-group">
                   <div class="col-sm-10 col-sm-offset-2">
-                    <button type="submit" class="btn btn-success" (click)="addEmployee()">
+                    <button type="submit" class="btn btn-success" (click)="updateEmployee()">
                       Guardar
                     </button>
                   </div>
@@ -160,6 +107,61 @@
               </form>
             </div>
         </div>
+
+    </div>
+  </div>
+
+  <!--Vista de productos-->
+  <div *ngIf= "producto" class="app">
+      <div class="row">
+        <!--Crear los productos-->
+        <div class="col-sm-8">
+          <h2>Ingresar Productos:</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="codigo" class="control-label col-sm-2">
+                Codigo
+              </label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="codigo"
+                  name="codigo" [(ngModel)]="model.codigo"
+                  placeholder="Ingrese un nuevo codigo"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nombre" class="control-label col-sm-2">
+                Nombre
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="codigo"
+                  name="nombre" [(ngModel)]="model.nombre"
+                  placeholder="Ingrese un nuevo nombre"
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="valor" class="control-label col-sm-2">
+                Valor
+              </label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="valor"
+                  name="valor" [(ngModel)]="model.valor"
+                  placeholder="Ingrese un nuevo valor"
+                >
+              </div>
+            </div>
+    
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-success" (click)="addEmployee()">
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
 </div>
 
     
