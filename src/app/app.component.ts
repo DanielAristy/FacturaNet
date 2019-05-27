@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
